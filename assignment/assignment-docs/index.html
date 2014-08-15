@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Assignment week 2 documentation</title>
+	<meta name="description" content="Assignment week 2 documentation">
+	<meta name="author" content="Kris Geusebroek">
+	<meta name="generator" content="slidify" />
+	
+	<!-- LOAD STYLE SHEETS -->
+	<link rel="stylesheet" href="libraries/frameworks/html5slides/default/styles.css">
+	<link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />  <link rel="stylesheet" href = "assets/css/ribbons.css">
+  
+</head>
+<body style='display: none'>
+	<section class='slides layout-regular template-regular'>
+     <article class="" id="slide-1" style="background:;">
+  <h3>Assignment documentation</h3>
+  <p>The assignment was:</p>
+
+<p><code>This peer assessed assignment has two parts. First, you will create a Shiny application and deploy it on Rstudio&#39;s servers. Second, you will use Slidify or Rstudio Presenter to prepare a reproducible pitch presentation about your application.</code></p>
+
+<p>This is the documentation part.  </p>
+
+<p>The application is at: <a href="http://krisgeus.shinyapps.io/simplestApp">http://krisgeus.shinyapps.io/simplestApp</a>. </p>
+
+</article>
+
+<article class="" id="slide-2" style="background:;">
+  <h3>The application</h3>
+  <p>The goal of the application is to find the maximum value in some distribution. </p>
+
+<p>Determining the maximum is done by taking a sample and in every next iteration take the top 20% and for each value sample 5 new points within a range from that point.</p>
+
+</article>
+
+<article class="" id="slide-3" style="background:;">
+  <h3>The code</h3>
+  <pre><code class="r">newsample = function(bestxvals, num, xrange, gmin, gmax){
+  xvals = rep(bestxvals,num) + runif(length(bestxvals)*num,-xrange,xrange)
+  xvals = sapply(xvals, function(x){ return(max(min(x, gmax), gmin)) } ) 
+  yvals = sapply(xvals, function(x) {sin(x*10)/10 + 2^(-(x)^2)})
+  newdf = data.frame(x = xvals, y = yvals)
+  return(newdf)
+}
+
+sample_size = 20; numiters = 5 #in app provided by UI
+
+xvals = seq(-4, 4, 0.02)
+yvals = sapply(xvals, f)
+distdf = data.frame( x=xvals, y= yvals)
+
+samplesx = runif(sample_size, -4, 4)
+samplesy = sapply(samplesx, function(x) {sin(x*10)/10 + 2^(-(x)^2)})
+sampledf = data.frame( x=samplesx, y=samplesy)
+
+for( i in 1:numiters ){
+  bestof   = sampledf[ order(-sampledf$y), ][1:round(nrow(sampledf)/5),]
+  sampledf = newsample(bestof$x, 5, (4 - -4)/(numiters+1), -4, 4 )
+}
+</code></pre>
+
+</article>
+
+<article class="" id="slide-4" style="background:;">
+  <h3>User interface</h3>
+  <p>The application has 2 different type of elements:</p>
+
+<ol>
+<li><p>The sliders</p>
+
+<ul>
+<li>Slider to get user input about the sample size</li>
+<li>Slider to get user input about the number of iterations for the algorithm</li>
+</ul></li>
+<li><p>The output plots for different functions</p>
+
+<ul>
+<li>Distribution from the function: \(sin(10x)/10 + 2^{-x^2}\)</li>
+<li>Distribution from the function: \(sin(10x)\)</li>
+<li>Distribution from the function: \(5sin(x)/(x^2+1)^2\)</li>
+</ul></li>
+</ol>
+
+<p>Selected samples form the last (and best predicting) iteration are colored red. The final maximum is colored green.</p>
+
+</article>
+
+  </section>
+</body>
+  <!-- LOAD JAVASCRIPTS  -->
+	<script src='libraries/frameworks/html5slides/default/slides.js'></script>
+	<!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+	<script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({
+	    tex2jax: {
+	      inlineMath: [['$','$'], ['\\(','\\)']],
+	      processEscapes: true
+	    }
+	  });
+	</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script> -->
+	<script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+	<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+	 
+	</html>
