@@ -47,7 +47,7 @@
 sample_size = 20; numiters = 5 #in app provided by UI
 
 xvals = seq(-4, 4, 0.02)
-yvals = sapply(xvals, f)
+yvals = sapply(xvals, function(x) {sin(x*10)/10 + 2^(-(x)^2)})
 distdf = data.frame( x=xvals, y= yvals)
 
 samplesx = runif(sample_size, -4, 4)

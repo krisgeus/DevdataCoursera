@@ -3,10 +3,10 @@ title       : "Assignment week 2 documentation"
 subtitle    : "Shiny app for developing data products course"
 author      : "Kris Geusebroek"
 job         : "Big Data Hacker"
-framework   : html5slides        # {io2012, html5slides, shower, dzslides, ...}
+framework   : html5slides   # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+widgets     : [mathjax]     # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
@@ -42,7 +42,7 @@ newsample = function(bestxvals, num, xrange, gmin, gmax){
 sample_size = 20; numiters = 5 #in app provided by UI
 
 xvals = seq(-4, 4, 0.02)
-yvals = sapply(xvals, f)
+yvals = sapply(xvals, function(x) {sin(x*10)/10 + 2^(-(x)^2)})
 distdf = data.frame( x=xvals, y= yvals)
 
 samplesx = runif(sample_size, -4, 4)
