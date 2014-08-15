@@ -19,7 +19,7 @@ The assignment was:
 
 This is the documentation part.  
 
-The application is at: [http://krisgeus.shinyapps.io/simplestApp](http://krisgeus.shinyapps.io/simplestApp). 
+The application is at: [http://krisgeus.shinyapps.io/assignment/](http://krisgeus.shinyapps.io/assignment/). 
 
 ---
 ## The application
