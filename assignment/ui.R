@@ -29,7 +29,8 @@ shinyUI(pageWithSidebar(
   
   # Show a plot of the generated distribution
   mainPanel(
-    div(class="row", p("Documentation is at:"), a("http://krisgeus.github.io/shiny-documentation/")),
+    div(class="row", p("Documentation is at:"), a(href="http://krisgeus.github.io/shiny-documentation/", "Github pages documentation created with slidify")),
+    div(class="row", p("Code is at:"), a(href="https://github.com/krisgeus/DevdataCoursera/tree/master/assignment", "Code for shiny application and slidify documentation")),
     div(class="row", plotOutput("distPlot1", width="100%", height="300")),
     div(class="row", plotOutput("distPlot2", width="100%", height="300")),
     div(class="row", plotOutput("distPlot3", width="100%", height="300"))
