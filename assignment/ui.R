@@ -6,11 +6,12 @@
 #
 
 library(shiny)
+library(slidify)
 
 shinyUI(pageWithSidebar(
-  
+
   # Application title
-  headerPanel("Kris Homework"),
+  headerPanel("Kris' Homework"),
   
   # Sidebar with a slider input for number of observations
   sidebarPanel(
@@ -28,8 +29,10 @@ shinyUI(pageWithSidebar(
   
   # Show a plot of the generated distribution
   mainPanel(
+    div(class="row", p("Documentation is at:"), a("http://krisgeus.github.io/shiny-documentation/")),
     div(class="row", plotOutput("distPlot1", width="100%", height="300")),
     div(class="row", plotOutput("distPlot2", width="100%", height="300")),
     div(class="row", plotOutput("distPlot3", width="100%", height="300"))
   )
+    
 ))

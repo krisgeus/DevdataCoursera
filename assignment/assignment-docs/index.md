@@ -7,8 +7,8 @@ framework   : html5slides   # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : [mathjax]     # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
+mode        : selfcontained # {standalone, draft}
 ---
 
 ## Assignment documentation
@@ -19,15 +19,17 @@ The assignment was:
 
 This is the documentation part.  
 
-The application is at: [http://krisgeus.shinyapps.io/simplestApp](http://krisgeus.shinyapps.io/simplestApp). 
+The application is at: [http://krisgeus.shinyapps.io/assignment/](http://krisgeus.shinyapps.io/assignment/). 
 
 ---
+
 ## The application
 The goal of the application is to find the maximum value in some distribution. 
 
 Determining the maximum is done by taking a sample and in every next iteration take the top 20% and for each value sample 5 new points within a range from that point.
 
 ---
+
 ## The code
 
 ```r
@@ -56,6 +58,7 @@ for( i in 1:numiters ){
 ```
 
 ---
+
 ## User interface 
 The application has 2 different type of elements:
 
