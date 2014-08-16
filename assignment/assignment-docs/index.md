@@ -25,8 +25,38 @@ The application is at: [http://krisgeus.shinyapps.io/assignment/](http://krisgeu
 
 ## The application
 The goal of the application is to find the maximum value in some distribution. 
+Determining the maximum is done by taking a sample and in every next iteration take the top 20% like this:
 
-Determining the maximum is done by taking a sample and in every next iteration take the top 20% and for each value sample 5 new points within a range from that point.
+```r
+#prepare data
+x = c(1,2,3,4,5,6,7,8,9,10)
+y = c(5,6,7,8,5,6,7,8,5,4)
+df = data.frame(x=x, y=y)
+
+#select top20%
+bestof = df[ order(-df$y), ][1:round(nrow(df)/5),]
+bestof
+```
+
+```
+##   x y
+## 4 4 8
+## 8 8 8
+```
+and for each of these values sample 5 new points within a range from that point.
+
+---
+
+## Used technologies
+I used the following technologies / tools:
+
+1. RStudio for developing
+2. ggplot for plots
+3. shiny for the application
+4. slidify for the documentation
+5. shinyapps for publishing the application
+6. github pages for publishing the docs
+7. github for publishing the code
 
 ---
 

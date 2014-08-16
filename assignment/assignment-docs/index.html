@@ -28,13 +28,45 @@
 
 <article class="" id="slide-2" style="background:;">
   <h3>The application</h3>
-  <p>The goal of the application is to find the maximum value in some distribution. </p>
+  <p>The goal of the application is to find the maximum value in some distribution. 
+Determining the maximum is done by taking a sample and in every next iteration take the top 20% like this:</p>
 
-<p>Determining the maximum is done by taking a sample and in every next iteration take the top 20% and for each value sample 5 new points within a range from that point.</p>
+<pre><code class="r">#prepare data
+x = c(1,2,3,4,5,6,7,8,9,10)
+y = c(5,6,7,8,5,6,7,8,5,4)
+df = data.frame(x=x, y=y)
+
+#select top20%
+bestof = df[ order(-df$y), ][1:round(nrow(df)/5),]
+bestof
+</code></pre>
+
+<pre><code>##   x y
+## 4 4 8
+## 8 8 8
+</code></pre>
+
+<p>and for each of these values sample 5 new points within a range from that point.</p>
 
 </article>
 
 <article class="" id="slide-3" style="background:;">
+  <h3>Used technologies</h3>
+  <p>I used the following technologies / tools:</p>
+
+<ol>
+<li>RStudio for developing</li>
+<li>ggplot for plots</li>
+<li>shiny for the application</li>
+<li>slidify for the documentation</li>
+<li>shinyapps for publishing the application</li>
+<li>github pages for publishing the docs</li>
+<li>github for publishing the code</li>
+</ol>
+
+</article>
+
+<article class="" id="slide-4" style="background:;">
   <h3>The code</h3>
   <pre><code class="r">newsample = function(bestxvals, num, xrange, gmin, gmax){
   xvals = rep(bestxvals,num) + runif(length(bestxvals)*num,-xrange,xrange)
@@ -62,7 +94,7 @@ for( i in 1:numiters ){
 
 </article>
 
-<article class="" id="slide-4" style="background:;">
+<article class="" id="slide-5" style="background:;">
   <h3>User interface</h3>
   <p>The application has 2 different type of elements:</p>
 
